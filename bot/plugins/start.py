@@ -10,15 +10,23 @@ from ..utubebot import UtubeBot
     Filters.private
     & Filters.incoming
     & Filters.command("start")
-    & Filters.user(Config.AUTH_USERS)
 )
 async def _start(c: UtubeBot, m: Message):
     await m.reply_chat_action("typing")
-
     await m.reply_text(
         text=tr.START_MSG.format(m.from_user.first_name),
         quote=True,
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("Join Project Channel!", url="https://t.me/odbots")]]
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup([
+                  [
+                      InlineKeyboardButton("How To Use Me🙄", callback_data="/help")
+                  ],
+                  [
+                      InlineKeyboardButton("Project Channel!", url="https://t.me/AK_CREATION_007"),
+                      InlineKeyboardButton("Support Group", url="https://t.me/AK_CREATION_007")
+                  ],
+                  [  
+                      InlineKeyboardButton("Buy the bot", url="https://t.me/AK_CREATION7")
+                  ]]
         ),
     )

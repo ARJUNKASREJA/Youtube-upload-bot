@@ -21,11 +21,10 @@ from ..utubebot import UtubeBot
 log = logging.getLogger(__name__)
 
 
-@UtubeBot.on_message(
+@YTUBE_UPLOAD_BOT.on_message(
     Filters.private
     & Filters.incoming
     & Filters.command("upload")
-    & Filters.user(Config.AUTH_USERS)
 )
 async def _upload(c: UtubeBot, m: Message):
     if not os.path.exists(Config.CRED_FILE):
@@ -143,7 +142,7 @@ async def progress(
             await snt.edit_text(
                 text=text,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton("Cancel!", f"cncl+{download_id}")]]
+                    [[InlineKeyboardButton("Cancel!🚫", f"cncl+{download_id}")]]
                 ),
             )
 

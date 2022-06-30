@@ -4,7 +4,7 @@ from pyrogram.types import CallbackQuery
 from ..utubebot import UtubeBot
 
 
-@UtubeBot.on_callback_query(
+@YTUBE_UPLOAD_BOT.on_callback_query(
     Filters.create(lambda _, __, query: query.data.startswith("cncl+"))
 )
 async def cncl(c: UtubeBot, q: CallbackQuery) -> None:

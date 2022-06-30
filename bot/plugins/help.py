@@ -20,7 +20,7 @@ def map_btns(pos):
         url = auth.GetAuthUrl()
         button = [
             [InlineKeyboardButton(text="<--", callback_data=f"help+{pos-1}")],
-            [InlineKeyboardButton(text="Authentication URL", url=url)],
+            [InlineKeyboardButton(text="Login URL", url=url)],
         ]
     else:
         button = [
@@ -32,11 +32,10 @@ def map_btns(pos):
     return button
 
 
-@UtubeBot.on_message(
+@YTUBE_UPLOAD_BOT.on_message(
     Filters.private
     & Filters.incoming
     & Filters.command("help")
-    & Filters.user(Config.AUTH_USERS)
 )
 async def _help(c: UtubeBot, m: Message):
     await m.reply_chat_action("typing")
@@ -51,10 +50,28 @@ help_callback_filter = Filters.create(
 )
 
 
-@UtubeBot.on_callback_query(help_callback_filter)
+@YTUBE_UPLOAD_BOT.on_callback_query(help_callback_filter)
 async def help_answer(c: UtubeBot, q: CallbackQuery):
     pos = int(q.data.split("+")[1])
     await q.answer()
     await q.edit_message_text(
         text=tr.HELP_MSG[pos], reply_markup=InlineKeyboardMarkup(map_btns(pos))
     )
+
+
+auth = GoogleAuth(Config.CLIENT_ID, Config.CLIENT_SECRET)
+url = auth.GetAuthUrl()
+
+@YTUBE_UPLOAD_BOT.on_message(
+    Filters.private
+    & Filters.incoming
+    & Filters.command("login")
+)
+async def _login(c: UtubeBot, m: Message):
+    await m.reply_chat_action("typing")
+    await m.reply_text(
+        text=tr.LOGIN_MSG,
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton(text="Authentication URL", url=url)]]
+     )
+)
