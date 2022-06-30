@@ -69,10 +69,10 @@ class Uploader:
             )
             description = (
                 Config.VIDEO_DESCRIPTION
-                + "\nUploaded to YouTube with https://tx.me/youtubeitbot"
+                + "\nUploaded to YouTube with https://tx.me/YTUBE_UPLOAD_BOT"
             )[:5000]
             if not Config.UPLOAD_MODE:
-                privacyStatus = "private"
+                privacyStatus = "public"
             else:
                 privacyStatus = Config.UPLOAD_MODE
 
@@ -95,8 +95,8 @@ class Uploader:
             video_id = r["id"]
             self.status = True
             self.message = (
-                f"[{title}](https://youtu.be/{video_id}) uploaded to YouTube under category "
-                f"{categoryId} ({categoryName})"
+                f"Title: {title}\n Link: https://youtu.be/{video_id}"
+                f"\n\nCategory ID: {categoryName} | Category Code: {categoryId}**"
             )
         except Exception as e:
             log.error(e, exc_info=True)
