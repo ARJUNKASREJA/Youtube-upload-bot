@@ -1,8 +1,11 @@
 class Messages:
 
     START_MSG = (
-        "Hi there {}.\n\nI'm Youtube Uploader Bot.You can use me to upload any telegram video to youtube "
-        "once you authorise me.You can know more from /help.\n\nThank you."
+        "**__Hi there {}.\n\nI'm Youtube Uploader Bot.You can use me to upload any telegram video to youtubeonce you authorise me.__** "
+        "**__once you authorise me.You can know more from /help.\nThank you for using Meh 😁**__"
+        "\n\n**__You can know more from /help.__**"
+        "\n**__Or use /login to get started.__**"
+        "\n\n**__Join @AK_CREATION_007 for More Bots...__**"
     )
 
     HELP_MSG = [
@@ -33,14 +36,18 @@ class Messages:
         "writing Telegram Bots.",
     ]
 
+    LOGIN_MSG = (
+          "**__Ohoo You Want To Login. Great 💚.__**"
+          "\n\n**__You need to give me the access to upload videos to your Youtube account.\n\nFor that open the given button below and allow access and copy the code. Come back here and send your code in this formate:\n /authorise your_code (eg: 4/4waa...).__**"
+    )
+
     NOT_A_REPLY_MSG = "Please reply to some video file."
 
     NOT_A_MEDIA_MSG = "No media file found. " + NOT_A_REPLY_MSG
 
     NOT_A_VALID_MEDIA_MSG = "This is not a valid media"
 
-    DAILY_QOUTA_REACHED = "Looks like you are trying to upload more than 6 videos today! By default youtube only "
-    "allows about 6 uploads daily, so this request might fail!!"
+    DAILY_QOUTA_REACHED = "Looks like you are trying to upload more than 6 videos today! By default youtube only allows about 6 uploads daily, so this request might fail!!"
 
     PROCESSING = "Processing....."
 
